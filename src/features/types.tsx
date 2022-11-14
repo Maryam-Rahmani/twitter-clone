@@ -23,16 +23,39 @@ export interface LoginInfo{
 
 export interface TweetInfo {
   body: string
-  tags: string[]
-  reply: null | string
+  tags?: string[]
+  reply?: null | string
+}
+export interface TweetItemProps {
+  text: string
+  id: string
+  reply:null,
+  tags:string[],
+}
+export interface CommentProps{
+  text: string
+  id: string
+}
+export interface TweetListProps {
+  postList: Array<CommentProps> 
+}
+
+export interface AddTweetProps {
+  onAdd: () => void;
 }
 
 export interface PostInfo{
-  id: string
-  body:string
+  body: string
+}
+export interface LikeInfo{
+  tweet_id: string
 }
 
-export interface TweetListProps {
-  postList: Component[];
- 
+export interface UserName{
+  username: string
+}
+
+export interface DataCheck{
+  item?: Array<TweetItemProps>
+  isTrue: boolean
 }

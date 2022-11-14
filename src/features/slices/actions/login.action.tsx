@@ -1,6 +1,6 @@
 import {createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "../message";
-import authService from "../../../services/auth.service";
+import authService from "../../../services/authUser.service";
 import { LoginInfo } from "../../types"; 
 
 export const login = createAsyncThunk(

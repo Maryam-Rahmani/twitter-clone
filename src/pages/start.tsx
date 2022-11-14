@@ -7,13 +7,13 @@ const StartPage: React.FunctionComponent= () => {
     <div className="container">
       <h1>See what's happening in the world right now</h1>
       <button type="button">
-        <Link to="./sign-up">
+        <Link to="/sign-up">
         Create account
         </Link>
       </button>
       <h6>
         Have an account already?
-        <Link to="./login">
+        <Link to="/login">
           Log in
         </Link>
       </h6>

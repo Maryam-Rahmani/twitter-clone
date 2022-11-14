@@ -1,41 +1,41 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Navigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import TweetPost from "./tweetpost";
+import { AddTweetProps } from "../features/types";
+import TweetList from "../component/TweetList";
+import CreateTweetBox from "../component/createTweetBox";
+import { DataCheck } from "../features/types"
+import FeedInfo from "../component/userTweetFeed";
+import FollowInfo from "../component/follow"
+import LikInfo from "../component/like"
+import DeleteInfo from "../component/like"
+import authService from "../services/authUser.service"
+import { useNavigate } from "react-router-dom";
+import "./profilecss.css"
 
 const ProfilePage = () => {
+  let navigate = useNavigate();
+  let commentList = JSON.parse(localStorage.getItem("tweet") || '""')
   const { user: currentUser } = useSelector((state:any) => state.auth);
 
+  const logOut = () => {
+    authService.logoutAPI()
+    navigate("/");
+    window.location.reload();
+  }
   if (!currentUser) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return (
     <div className="container">
-      <header className="jumbotron">
-        <h3>
-          <strong>{currentUser.username}</strong> Profile
-        </h3>
-      </header>
-      <p>
-        <strong>Token:</strong> {currentUser.token.substring(0, 20)} ...{" "}
-        {currentUser.token.substr(currentUser.token.length - 20)}
-      </p>
-      <p>
-        <strong>Id:</strong> {currentUser.id}
-      </p>
-      <p>
-        <strong>Email:</strong> {currentUser.email}
-      </p>
-      <strong>Authorities:</strong>
-      <ul>
-        {currentUser.roles &&
-          currentUser.roles.map((role:string, index:number) => <li key={index}>{role}</li>)}
-      </ul>
-      
-      <TweetPost>
-
-      </TweetPost>
+      <div className="buttonInfo">
+        <button type="button" id="buttonLog" onClick={logOut}>logout</button>
+        <CreateTweetBox/>
+        <TweetList
+          postList={commentList}
+        />
+      </div>
     </div>
   );
 };

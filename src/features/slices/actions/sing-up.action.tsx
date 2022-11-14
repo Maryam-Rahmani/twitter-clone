@@ -1,6 +1,6 @@
 import {createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "../message";
-import authService from "../../../services/auth.service";
+import authService from "../../../services/authUser.service";
 import { UserInfo } from "../../types"; 
 
 export const singUp = createAsyncThunk(

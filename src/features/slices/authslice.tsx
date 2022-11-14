@@ -2,7 +2,7 @@ import { createSlice} from "@reduxjs/toolkit";
 import { singUp } from "./actions/sing-up.action";
 import { login } from "./actions/login.action";
 import { logout } from "./actions/logout.action";
-import { tweet } from "./actions/tweet-post.action";
+
 
 const user = JSON.parse(localStorage.getItem("user") ||'""')
 
@@ -33,12 +33,13 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.user = null;
     })
-    builder.addCase(tweet.fulfilled, (state) => {
-      state.isLoggedIn = false;
-    })
-    builder.addCase(tweet.rejected, (state) => {
-      state.isLoggedIn = false;
-    })
+   // builder.addCase(tweet.fulfilled, (state,action) => {
+     // state.isLoggedIn = true;
+      //state.user = action.payload.user;
+   // })
+   // builder.addCase(tweet.rejected, (state) => {
+   //  state.isLoggedIn = false;
+   // })
   }
   
 });

@@ -19,7 +19,7 @@ const SignUpPage: React.FunctionComponent = () => {
   const [messageBody , setMessageBody] = useState("");
   const { message } = useSelector((state: any) => state.message);
   const { isLoggedIn } = useSelector((state:any) => state.auth);
-  console.log( message)
+  console.log(message)
 
   
 
@@ -54,12 +54,12 @@ const handleRegister = (formValue:UserInfo) => {
         const refresh = ()  => window.location.reload();
         setMessageBody("User Created Successfully")
         navigate("/login")
-        setTimeout(refresh, 3000)
+        setTimeout(refresh, 300)
        
       }else if (message === "Request failed with status code 400"){
         const removeMassage = ()  => setMessageBody("")
         setMessageBody("A User with this Information exists already! Please try again?")
-        setTimeout(removeMassage, 3000)
+        setTimeout(removeMassage, 300)
         formValue.email = ""
         formValue.username = ""
         formValue.password = ""
